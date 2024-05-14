@@ -875,6 +875,7 @@ function BibTex(options)
 		'phdthesis',
 		'proceedings',
 		'techreport',
+        'software',
 		'unpublished'
 	);
 	this.authorstring = 'VON LAST, JR, FIRST';
@@ -2683,6 +2684,13 @@ var bibtexify = (function($) {
                 ((entryData.howpublished) ? ". "   + this.howpublished2html(entryData.howpublished) :"") +
                 ((entryData.note)         ? ". "   + this.note2html(entryData.note)                 :"") + ".";
         },
+        software: function(entryData) {
+            return                                   this.authors2html(entryData.author)                 +
+                ((entryData.year)         ? " ("   + this.year2html(entryData.year)     + ")"       :"") +
+                ((entryData.title)        ? ". "   + this.title2html(entryData.title)               :"") +
+                ((entryData.howpublished) ? ". "   + this.howpublished2html(entryData.howpublished) :"") +
+                ((entryData.note)         ? ". "   + this.note2html(entryData.note)                 :"") + ".";
+        },
         mastersthesis: function(entryData) {
             return                                   this.authors2html(entryData.author)                 +
                 ((entryData.year)         ? " ("   + this.year2html(entryData.year)     + ")"       :"") +
@@ -2731,6 +2739,7 @@ var bibtexify = (function($) {
             'proceedings': 60,
             'conference': 70,
             'article': 80,
+            'software': 80,
             'phdthesis': 90,
             'inbook': 100,
             'book': 110,
@@ -2749,6 +2758,7 @@ var bibtexify = (function($) {
             'misc': 'Misc',
             'phdthesis': 'PhD Thesis',
             'proceedings': 'Conference proceeding',
+            'software': 'Software',
             'techreport': 'Technical report',
             'unpublished': 'Unpublished'}
     };
